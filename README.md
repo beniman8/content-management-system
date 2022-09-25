@@ -15,14 +15,6 @@ agent can manage their own leads
 
 <br>
 
-
-### Built With
-
-
-* [![Django][djangoproject.com]][Django-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-
-
 ## Commands to start this pojects in your window terminal
 
 This here are the commands to start th project
