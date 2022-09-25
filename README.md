@@ -1,10 +1,16 @@
 # Customer Relationship Management
 This is a django simple customer relationship management is a process in which a business or other organization administers its interactions with customers, typically using data analysis to study large amounts of information.
 
+
+<br>
+
 ## Basic Overview
 This website can create agents and leads. 
 we can assign leads to each agents
 agent can manage their own leads 
+
+
+<br>
 
 ## Commands to start this pojects in your window terminal
 
@@ -26,6 +32,8 @@ pip freeze > requirements.txt
 
 django-admin startproject core .
 ```
+
+<br>
 
 ## .env file content 
 
@@ -56,6 +64,7 @@ EMAIL_HOST_USER=your-email-host-user
 
 ```
 
+<br>
 
 ### Setings.py
 
