@@ -30,6 +30,8 @@ You have to create a .env file in your directory at the same location the manage
 
 remove the '' when you copy your SECURITY_KEY to the .env file
 
+<img src="https://github.com/beniman8/content-management-system/blob/main/envfilelocation.PNG" width=40%>
+
 ```.env
 
 SECRET_KEY=paste-your-security-key-here
