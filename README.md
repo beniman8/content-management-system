@@ -93,3 +93,17 @@ DEBUG = config('DEBUG', cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 ```
+
+## Runing the project locally
+
+Make sure your virtual env is activated and run this command on your terminal.
+
+Make sure also that you are running the command at the same directory as your manage.py folder or it won't work.
+
+To quit project press control C on windows computer ctrl+C
+
+```python
+
+python manage.py runserver
+
+```
