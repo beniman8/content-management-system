@@ -107,3 +107,41 @@ To quit project press control C on windows computer ctrl+C
 python manage.py runserver
 
 ```
+
+## Creating an app
+
+This is how to create apps.
+
+Make sure to change app_name to the name you want your app to be
+
+```bash
+
+python manage.py startapp app_name
+```
+
+Once the app is created you will see it in the same directory as your project fille.
+In our case in the same folder as core
+
+Make sure to add your app into the setting installed apps in order for django to make use of your new app.
+
+```python
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+
+
+    'app_name',
+]
+
+
+```
+
+replace the app_name with the name of your app.
