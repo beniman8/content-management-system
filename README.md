@@ -1,7 +1,10 @@
-# Content Management System
-This is a django simple content management system 
+# Customer Relationship Management
+This is a django simple customer relationship management is a process in which a business or other organization administers its interactions with customers, typically using data analysis to study large amounts of information.
 
 ## Basic Overview
+This website can create agents and leads. 
+we can assign leads to each agents
+agent can manage their own leads 
 
 ## Commands to start this pojects in your window terminal
 
