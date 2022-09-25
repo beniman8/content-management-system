@@ -1,3 +1,6 @@
+
+<img src="https://github.com/beniman8/content-management-system/blob/main/django_crm.png" width=40%>
+
 # Customer Relationship Management
 This is a django simple customer relationship management is a process in which a business or other organization administers its interactions with customers, typically using data analysis to study large amounts of information.
 
