@@ -226,3 +226,45 @@ If you are going to be making changes in your model , and you don't want many er
 just go to app_name/migrations/0001_initial.py and delete that file and start over !
 
 Careful try to do this only in your local verions of the site and not the live site !!
+
+## Model Managers
+
+lets say you have created a model called things , you will need a way to interact with the thing.
+Django as a way for you to access the things here is the code on how to access the things.
+
+Code:
+
+```python
+
+class Thing(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    age = models.IntegerField(default=0)
+
+```
+
+To acces the model manager of Thing just use this code:
+
+```python 
+
+#objects come with a lot of function we cant use to handle or manipulate the Thing ;)
+Thing.objects
+
+#This here is to create a new thing
+Thing.objects.create(first_name='thingy',last_name='thing',age=23)
+
+#This is to query or ask the database for information you need on the Thing
+
+#gets you all the things in your database
+Thing.objects.all()
+
+
+#This will get you a Thing with a first name called thingy
+Thing.objects.filter(first_name='thingy)
+
+#this will get you a Thing that has an age greater than 18
+Thing.objects.filter(age__gt=18)
+```
+
+so you get it you can now get data from your database by asking it what you want.
+and 

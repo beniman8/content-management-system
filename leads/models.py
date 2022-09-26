@@ -28,7 +28,15 @@ class Lead(models.Model):
     #but also one lead can not hvae many agents or only one agent
     agent = models.ForeignKey("Agent", on_delete=models.CASCADE)
 
+
+    def __str__(self) -> str:
+        return f'Lead Name: {self.first_name}  |  Agent Name: {self.agent.user.username}'
+
 class Agent(models.Model):
     #we are creating one agent for everyone user so we need a one to one relationship and not a foreingkey
     user = models.OneToOneField("User", on_delete=models.CASCADE)
+    
+
+    def __str__(self) -> str:
+        return self.user.username
     
