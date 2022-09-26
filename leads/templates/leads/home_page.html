@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 class="home">Hello world!</h1>
+<pre>
+    This file will be displayed if you want your program to get it's template hmtl file from the 
+    App directory.
+
+    If you want to get the file to run from your base directory or the same directory 
+    as your core/ project you must go to settings 
+
+    and change the template base directory  .... to  BASE_DIR / 'templates'
+
+    and create a folder with all your templates and you can acces it.
+</pre>
+
+<pre>
+    TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+</pre>
+</body>
+</html>
