@@ -5,6 +5,9 @@ from .models import Lead, Agent
 from .forms import LeadForm,LeadModelForm
 
 
+
+################################################# VIEW THE LEADS  ########################################################
+
 #When you call this home page the browser wil send you a request witth,
 #a whole lot of data coming from the website that you can use
 def lead_list(request):
@@ -51,9 +54,12 @@ def lead_detail(request, pk):
 
 
 
+
+
+################################################### CREATE THE LEADS  ###########################################
+
 def lead_create(request):
     form = LeadModelForm()
-    print(request.POST)
     if request.method == "POST":
         print('Receiving a post request')
         form = LeadModelForm(request.POST)
@@ -110,3 +116,58 @@ def lead_create(request):
 #         "form": form,
 #     }
 #     return render(request,'leads/lead_create.html',context)
+
+
+
+################################################### UPDATE THE LEADS  ###########################################
+
+def lead_update(request,pk):
+    lead = Lead.objects.get(id=pk)
+    #we grab an instance of our lead form with this id and with show it in our html front page
+    #so that we can edit our instance that is saved in our database and save it again
+    #with the new edited content
+    form = LeadModelForm(instance=lead)
+    if request.method == "POST":
+        form = LeadModelForm(request.POST,instance=lead)
+        if form.is_valid():
+            form.save()
+            return redirect('/leads')
+        
+    context = {
+        'form':form,
+        "lead": lead,
+    }
+    return render(request, 'leads/lead_update.html',context)
+
+# def lead_update(request,pk):
+#     lead = Lead.objects.get(id=pk)
+#     form = LeadForm()
+#     if request.method == "POST":
+#         print('Receiving a post request')
+#         form = LeadForm(request.POST)
+#         if form.is_valid():
+#             print('form is valid')
+#             # print(form.cleaned_data)
+#             #The clean data just returns a formated dictionary that we can use
+#             # {'first_name': 'jhon', 'last_name': 'doeetry', 'age': 45}
+
+#             #we are retreaving the data from the dictionary so that we can use it to update the lead in the database
+#             first_name = form.cleaned_data['first_name']
+#             last_name = form.cleaned_data['last_name']
+#             age = form.cleaned_data['age']
+
+#             #we update this new lead
+#             lead.first_name=first_name
+#             lead.last_name = last_name
+#             lead.age = age
+#             lead.save()
+
+
+#             #after the lead has been updared return us to the main page with all our leads
+#             return redirect('/leads')
+    
+#     context = {
+#         'form':form,
+#         "lead": lead,
+#     }
+#     return render(request, 'leads/lead_update.html',context)
