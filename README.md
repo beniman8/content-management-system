@@ -96,6 +96,7 @@ DEBUG = config('DEBUG', cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 ```
+<br>
 
 ## Runing the project locally
 
@@ -110,6 +111,7 @@ To quit project press control C on windows computer ctrl+C
 python manage.py runserver
 
 ```
+<br>
 
 ## Creating an app
 
@@ -149,7 +151,7 @@ INSTALLED_APPS = [
 
 replace the app_name with the name of your app.
 
-
+<br>
 
 ## Creating models
 
@@ -226,6 +228,8 @@ If you are going to be making changes in your model , and you don't want many er
 just go to app_name/migrations/0001_initial.py and delete that file and start over !
 
 Careful try to do this only in your local verions of the site and not the live site !!
+
+<br>
 
 ## Model Managers
 
