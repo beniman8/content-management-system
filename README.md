@@ -220,3 +220,9 @@ class Migration(migrations.Migration):
 ```
 
 This is what django will passed down to your detabase.
+
+If you are going to be making changes in your model , and you don't want many errors
+
+just go to app_name/migrations/0001_initial.py and delete that file and start over !
+
+Careful try to do this only in your local verions of the site and not the live site !!
