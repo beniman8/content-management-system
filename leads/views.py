@@ -1,7 +1,8 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Lead
+from .models import Lead, Agent
+from .forms import LeadForm
 
 
 #When you call this home page the browser wil send you a request witth,
@@ -47,4 +48,46 @@ def lead_detail(request, pk):
         'lead':lead,
     }
     return render(request,'leads/lead_detail.html',context)
+
+
+def lead_create(request):
+
+    # print(request.POST)
+    #Result of when the form button get pressed and we receive the post data coming from the front end or html page
+    #<QueryDict: {'csrfmiddlewaretoken': ['KxbZvNP0TeM9l1S2aFx94cZ2xsv24KSPL9x48fVsXqIA0drJqr0vkzUGu4ux7IjD'], 'first_name': ['beni'], 'last_name': ['kangu'], 'age': ['34']}>
+    form = LeadForm()
+    if request.method == "POST":
+        print('Receiving a post request')
+        form = LeadForm(request.POST)
+        if form.is_valid():
+            print('form is valid')
+            # print(form.cleaned_data)
+            #The clean data just returns a formated dictionary that we can use
+            # {'first_name': 'jhon', 'last_name': 'doeetry', 'age': 45}
+
+            #we are retreaving the data from the dictionary so that we can use it to create the lead in the database
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            age = form.cleaned_data['age']
+            #for now just grab the first agent
+            agent = Agent.objects.first()
+
+            #we create a new lead and pass it all the data that's needed coming from the form
+            Lead.objects.create(
+                first_name=first_name,
+                last_name = last_name,
+                age = age,
+                agent = agent,
+            )
+
+            #after the lead has been created return us to the main page with all our leads
+            return redirect('/leads')
+    
+    #when we call LeadForm() we are sending and creating a form that can be accesed to the front end
+    #This will return a html form with the values that are available in the form you have created.
+    context = {
+        # "form": LeadForm(),
+        "form": form,
+    }
+    return render(request,'leads/lead_create.html',context)
 

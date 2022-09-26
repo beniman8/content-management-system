@@ -10,7 +10,10 @@ This is a django simple customer relationship management is a process in which a
 ## Basic Overview
 This website can create agents and leads. 
 we can assign leads to each agents
-agent can manage their own leads 
+agent can manage their own leads.
+
+
+** This Django is heavily commented and is meant for learning purpose  **
 
 
 <br>
