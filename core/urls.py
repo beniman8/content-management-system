@@ -18,5 +18,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('leads.urls'))
+    path('leads/', include('leads.urls',namespace='leads'))
 ]
+
+#namespace is a unique way you can identify all the url in a file or app. so if you want to get
+#a certain url in leads you can type in {% url 'leads.name-of-url' %}
