@@ -1,16 +1,35 @@
 from multiprocessing import context
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
 from .models import Lead, Agent
 from .forms import LeadForm,LeadModelForm
+from django.views.generic import TemplateView,ListView,DeleteView,UpdateView,DetailView,CreateView
 
+
+#CRUD+L  CREATE RETRIEVE/READ UPDATE DELETE + LIST
+
+######################### LANDINGPAGE VIEW ##########################################
+
+class LandingPageView(TemplateView):
+    template_name = 'landing.html'
+
+def landing_page(request):
+    return render(request,'landing.html')
 
 
 ################################################# VIEW THE LEADS  ########################################################
 
 
-def landing_page(request):
-    return render(request,'landing.html')
+
+
+#The class Base view version 
+
+class LeadListView(ListView):
+    template_name = 'leads/lead_list.html'
+    queryset = Lead.objects.all()
+
+    #object_list is the key set by this class we will change it to leads
+    context_object_name = 'leads'
 
 
 #When you call this home page the browser wil send you a request witth,
@@ -41,6 +60,18 @@ def lead_list(request):
     return render(request,'leads/lead_list.html',context)
 
 
+
+
+
+#The class Base view version 
+
+class LeadDetailView(DetailView):
+    template_name = 'leads/lead_detail.html'
+    queryset = Lead.objects.all()
+    context_object_name = 'lead'
+
+    #This will automatically grab the pk for us
+
 def lead_detail(request, pk):
     #if you want to return a certain value to our function
     #add it to the function in our case pk. 
@@ -62,6 +93,15 @@ def lead_detail(request, pk):
 
 
 ################################################### CREATE THE LEADS  ###########################################
+
+#The class Base view version 
+class LeadCreateView(CreateView):
+    template_name = 'leads/lead_create.html'
+    form_class = LeadModelForm
+
+    def get_success_url(self) -> str:
+        return reverse('leads:lead-list')
+  
 
 def lead_create(request):
     form = LeadModelForm()
@@ -126,6 +166,17 @@ def lead_create(request):
 
 ################################################### UPDATE THE LEADS  ###########################################
 
+#The class Base view version 
+class LeadUpdateView(UpdateView):
+    template_name = 'leads/lead_update.html'
+    queryset = Lead.objects.all()
+    form_class = LeadModelForm
+    
+
+    def get_success_url(self) -> str:
+        return reverse('leads:lead-list')
+
+
 def lead_update(request,pk):
     lead = Lead.objects.get(id=pk)
     #we grab an instance of our lead form with this id and with show it in our html front page
@@ -179,6 +230,15 @@ def lead_update(request,pk):
 
 
 ################################################### DELETE THE LEADS  ###########################################
+
+#The class Base view version 
+class LeadDeleteView(DeleteView):
+    template_name = 'leads/lead_delete.html'
+    queryset = Lead.objects.all()
+
+    def get_success_url(self) -> str:
+        return reverse('leads:lead-list')
+
 
 def lead_delete(request,pk):
     
