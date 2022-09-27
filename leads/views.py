@@ -8,6 +8,11 @@ from .forms import LeadForm,LeadModelForm
 
 ################################################# VIEW THE LEADS  ########################################################
 
+
+def landing_page(request):
+    return render(request,'landing.html')
+
+
 #When you call this home page the browser wil send you a request witth,
 #a whole lot of data coming from the website that you can use
 def lead_list(request):

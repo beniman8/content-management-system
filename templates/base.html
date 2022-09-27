@@ -6,26 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Djang Custumer Relationship Manager</title>
 
-    <style>
-
-
-        .lead {
-            padding:10px 6px 10px 6px;
-            margin-top: 10px;
-            background-color: #f6f6f6;
-            width: 100%;
-
-
-
-        }
-        
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
-    {% block content %}
-    
-    {% endblock content %}
+{% include 'navbar.html' %}
+
+<div class="max-w-7xl mx-auto">
+{% block content %}
+{% endblock content %}
+</div>
+
     
 {% comment %} This here is hpw you include our webpages to your page {% endcomment %}
 {% include 'scripts.html' %}
