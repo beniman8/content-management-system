@@ -32,8 +32,10 @@
 </head>
 <body>
     
-<a href="/leads/create/">Create New Lead</a>
+{% comment %} <a href="/leads/create/">Create New Lead</a> This is how you create a hard coded link{% endcomment %}
 
+{% comment %} This here is an dynamic link using first the namespace from the core url and than finding the name of the path in your app url {% endcomment %}
+<a href="{% url 'leads:lead-create' %}">Create New Lead</a>
     <hr>
 <h1>This is all of our leads</h1>
 
@@ -41,7 +43,11 @@
 
     <div class="lead"> 
         {% comment %} the href is how you can get the model to return the pk value from the databas coming from the item it found {% endcomment %}
-        <a href="/leads/{{lead.pk}}/" class="">
+        {% comment %} <a href="/leads/{{lead.pk}}/" class=""> This is how you send a primary key the hard coded way{% endcomment %}
+            
+
+        {% comment %} This is how you send the primary key dynamicaly {% endcomment %}
+        <a href="{% url 'leads:lead-detail' lead.pk %}" >
             {{lead.first_name}} {{lead.last_name}} {{lead.age}}
         </a>
     </div>
