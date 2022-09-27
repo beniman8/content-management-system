@@ -1,37 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-
-
-        .lead {
-            padding:10px 6px 10px 6px;
-            margin-top: 10px;
-            background-color: #f6f6f6;
-            width: 100%;
-
-
-
-        }
-        
-    </style>
-
-    {% comment %} 
-    padding:10px 5px 15px 20px;
-    top padding is 10px
-    right padding is 5px
-    bottom padding is 15px
-    left padding is 20px 
-    {% endcomment %}
-
-</head>
-<body>
+{% extends 'base.html' %}
     
+
+
+{% block content %}
+
 {% comment %} <a href="/leads/create/">Create New Lead</a> This is how you create a hard coded link{% endcomment %}
 
 {% comment %} This here is an dynamic link using first the namespace from the core url and than finding the name of the path in your app url {% endcomment %}
@@ -54,7 +26,5 @@
    
     {% endfor %}
 
+{% endblock content %}
 
-
-</body>
-</html>

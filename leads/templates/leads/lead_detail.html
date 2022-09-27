@@ -1,41 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% extends 'base.html' %}
 
-    <style>
+{% block content %}
 
 
-        .lead {
-            padding:10px 6px 10px 6px;
-            margin-top: 10px;
-            background-color: #f6f6f6;
-            width: 100%;
-
-
-
-        }
-        
-    </style>
-
-    {% comment %} 
-    padding:10px 5px 15px 20px;
-    top padding is 10px
-    right padding is 5px
-    bottom padding is 15px
-    left padding is 20px 
-    {% endcomment %}
-
-</head>
-<body>
-
-
-    {% comment %} <a href="/leads">Go Back to leads</a> Hardcoded vs dynamicaly coded {% endcomment %}
-    <a href="{% url 'leads:lead-list' %}">Go Back to leads</a>
-    <hr>
+{% comment %} <a href="/leads">Go Back to leads</a> Hardcoded vs dynamicaly coded {% endcomment %}
+<a href="{% url 'leads:lead-list' %}">Go Back to leads</a>
+<hr>
 <h1>This is the detail of {{lead.first_name}} {{lead.last_name}}</h1>
 <p>This person's age is {{lead.age}}</p>
 <p>The agent responsible for this lead is {{lead.agent}}</p>
@@ -48,5 +18,4 @@
 <a href=" {% url 'leads:lead-update' lead.pk %} ">Update</a>
 <a href="{% url 'leads:lead-delete' lead.pk %} ">Delete</a> 
 
-</body>
-</html>
+{% endblock content %}
