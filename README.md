@@ -13,7 +13,9 @@ we can assign leads to each agents
 agent can manage their own leads.
 
 
-** This Django is heavily commented and is meant for learning purpose  **
+** This Django is heavily commented and is meant for learning purpose **
+
+Shout out to just django for teaching this on youtube !!!!
 
 
 <br>
