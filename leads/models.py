@@ -19,6 +19,13 @@ class User(AbstractUser):
     '''
     pass
 
+class UserProfile(models.Model):
+    user = user = models.OneToOneField("User", on_delete=models.CASCADE)
+
+
+    def __str__(self) -> str:
+        return self.user.username
+
 class Lead(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -35,7 +42,7 @@ class Lead(models.Model):
 class Agent(models.Model):
     #we are creating one agent for everyone user so we need a one to one relationship and not a foreingkey
     user = models.OneToOneField("User", on_delete=models.CASCADE)
-    
+    organisation = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.user.username

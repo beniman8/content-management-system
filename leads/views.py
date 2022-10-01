@@ -6,7 +6,8 @@ from .models import Lead, Agent
 from .forms import LeadForm,LeadModelForm,CustomUserCreationForm
 from django.views.generic import TemplateView,ListView,DeleteView,UpdateView,DetailView,CreateView
 
-
+#checks if user is authenticated
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # from django.contrib.auth.forms import UserCreationForm # used this to create my own user creation form
 
@@ -39,7 +40,7 @@ def landing_page(request):
 
 #The class Base view version 
 
-class LeadListView(ListView):
+class LeadListView(LoginRequiredMixin,ListView):
     template_name = 'leads/lead_list.html'
     queryset = Lead.objects.all()
 
@@ -80,7 +81,7 @@ def lead_list(request):
 
 #The class Base view version 
 
-class LeadDetailView(DetailView):
+class LeadDetailView(LoginRequiredMixin,DetailView):
     template_name = 'leads/lead_detail.html'
     queryset = Lead.objects.all()
     context_object_name = 'lead'
@@ -110,7 +111,7 @@ def lead_detail(request, pk):
 ################################################### CREATE THE LEADS  ###########################################
 
 #The class Base view version 
-class LeadCreateView(CreateView):
+class LeadCreateView(LoginRequiredMixin,CreateView):
     template_name = 'leads/lead_create.html'
     form_class = LeadModelForm
 
@@ -194,7 +195,7 @@ def lead_create(request):
 ################################################### UPDATE THE LEADS  ###########################################
 
 #The class Base view version 
-class LeadUpdateView(UpdateView):
+class LeadUpdateView(LoginRequiredMixin,UpdateView):
     template_name = 'leads/lead_update.html'
     queryset = Lead.objects.all()
     form_class = LeadModelForm
@@ -259,7 +260,7 @@ def lead_update(request,pk):
 ################################################### DELETE THE LEADS  ###########################################
 
 #The class Base view version 
-class LeadDeleteView(DeleteView):
+class LeadDeleteView(LoginRequiredMixin,DeleteView):
     template_name = 'leads/lead_delete.html'
     queryset = Lead.objects.all()
 
