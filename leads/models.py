@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.db.models.signals import post_save
 #If you dont want to create your own user model you can grab the one created by django
 # from django.contrib.auth import get_user_model
 # User = get_user_model
@@ -47,3 +47,21 @@ class Agent(models.Model):
     def __str__(self) -> str:
         return self.user.username
     
+
+def post_user_create_signal(sender,instance,created,**kwargs):
+    ''' This here is going to be used to create a user profile of the person once the user is created.
+
+        instance is a copy of the sender so in our case it will be the user
+
+        created is a true are false value if your user has been created and saved
+    
+    '''
+
+    if created:
+        UserProfile.objects.create(user=instance)
+    
+
+
+#This here is saying check the user class if the save method is activated
+#run the post_user_create_signal function
+post_save.connect(post_user_create_signal,sender=User)
