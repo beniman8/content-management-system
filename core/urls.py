@@ -32,8 +32,18 @@ urlpatterns = [
     path('leads/', include('leads.urls', namespace='leads')),
     path('signup/',SignUpView.as_view(),name='signup'),
     path('login/',LoginView.as_view(),name='login'),
-    path('logout/',LogoutView.as_view(),name='logout')
+    path('logout/',LogoutView.as_view(),name='logout'),
+
+
 ]
+
+
+urlpatterns += [
+    path('agents/', include('agents.urls', namespace='agents')),
+
+
+]
+
 
 # namespace is a unique way you can identify all the url in a file or app. so if you want to get
 # a certain url in leads you can type in {% url 'leads.name-of-url' %}
