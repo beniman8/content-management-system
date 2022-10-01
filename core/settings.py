@@ -130,3 +130,5 @@ AUTH_USER_MODEL = "leads.User"
 
 #to log email in the consol instead of trying to actual send the email.
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+LOGIN_REDIRECT_URL='/leads'

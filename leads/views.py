@@ -3,11 +3,25 @@ from multiprocessing import context
 from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
 from .models import Lead, Agent
-from .forms import LeadForm,LeadModelForm
+from .forms import LeadForm,LeadModelForm,CustomUserCreationForm
 from django.views.generic import TemplateView,ListView,DeleteView,UpdateView,DetailView,CreateView
 
 
+
+# from django.contrib.auth.forms import UserCreationForm # used this to create my own user creation form
+
 #CRUD+L  CREATE RETRIEVE/READ UPDATE DELETE + LIST
+
+
+class SignUpView(CreateView):
+    template_name = 'registration/signup.html'
+    form_class = CustomUserCreationForm
+
+    def get_success_url(self) -> str:
+        return reverse('login')
+
+
+
 
 ######################### LANDINGPAGE VIEW ##########################################
 
